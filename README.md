@@ -10,6 +10,6 @@ Login with  diferents forms (Facebook, Google, Github, ...)
 <br>
 <h3>Commands</h3>
 <ul>
-<li>npm install<li>
-<li>npm start<li>
+<li>npm install</li>
+<li>npm start</li>
 </ul>
