@@ -13,6 +13,7 @@ var github = {
   Secret:'YOUR_SECRET',
   URL: 'http://localhost:3000/auth/github/callback'
 }
+//comment/
 module.exports = {
   facebook,
   google,
