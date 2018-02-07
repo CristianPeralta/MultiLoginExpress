@@ -3,7 +3,7 @@ var Schema = mongoose.Schema;
 
 var UserSchema = new Schema({
 	name				: String,
-	facebook_id : {type: String, unique: true},
+	provider_id : {type: String, unique: true},
 	photo			 : String,
   email			 : String,
 	createdAt	 : {type: Date, default: Date.now}

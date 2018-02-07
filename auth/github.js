@@ -1,8 +1,8 @@
 var User = require('../models/User');
 var passport = require('passport');
-var FacebookStrategy = require('passport-facebook').Strategy;
+var GithubStrategy = require('passport-github').Strategy;
 
-var authconfig = require('../authConfig').facebook;
+var authconfig = require('../authConfig').github;
 
 var opts = {
   clientID : authconfig.ID,
@@ -19,14 +19,13 @@ passport.deserializeUser(function(obj, done) {
   done(null, obj);
 });
 
-passport.use(new FacebookStrategy(opts,
+passport.use(new GithubStrategy(opts,
 
   function(accessToken, refreshToken, profile, done) {
 
 		User.findOne({provider_id: profile.id}, function(err, user) {
 			if(err) throw(err);
 			if(!err && user!= null) return done(null, user);
-
 			var user = new User({
 				provider_id	: profile.id,
 				name				: profile.displayName,
