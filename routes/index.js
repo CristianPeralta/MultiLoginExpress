@@ -3,6 +3,7 @@ var router = express.Router();
 var passportFacebook = require('../auth/facebook');
 var passportGoogle = require('../auth/google');
 var passportGithub = require('../auth/github');
+var passportTwitter = require('../auth/twitter');
 var userController = require('../controllers/userController');
 
 /* GET home page. */
@@ -50,6 +51,17 @@ router.get('/auth/google/callback',
             successRedirect : '/',
             failureRedirect : '/'
     }));
+
+router.get('/auth/twitter',
+passportTwitter.authenticate('twitter',{ scope : ['profile', 'email'] }));
+
+router.get('/auth/twitter/callback',
+  passportTwitter.authenticate('twitter', { failureRedirect: '/' }),
+  function(req, res) {
+    // Successful authentication, redirect home.
+    console.log(req.user);
+    return res.render('index', {'user':req.user});
+  });
 
 router.get('/favicon.ico', function(req, res, next) {
   return res.status(204);
