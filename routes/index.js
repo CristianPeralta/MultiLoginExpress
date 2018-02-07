@@ -51,8 +51,6 @@ router.get('/auth/google/callback',
             failureRedirect : '/'
     }));
 
-
-
 router.get('/favicon.ico', function(req, res, next) {
   return res.status(204);
 });
