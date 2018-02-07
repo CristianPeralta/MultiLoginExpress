@@ -8,7 +8,7 @@ var opts = {
   clientID : authconfig.ID,
   clientSecret:authconfig.Secret,
   callbackURL:authconfig.URL,
-  profileFields : ['id', 'displayName', 'photos']
+  profileFields : ['id', 'displayName', 'photos','email']
 };
 
 passport.serializeUser(function(user, done) {
