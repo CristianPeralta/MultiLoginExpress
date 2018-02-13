@@ -26,10 +26,14 @@ passport.use(new GithubStrategy(opts,
 		User.findOne({provider_id: profile.id}, function(err, user) {
 			if(err) throw(err);
 			if(!err && user!= null) return done(null, user);
-			var user = new User({
+      let email = 'Email private';
+      if (profile.hasOwnProperty('emails')) {
+        email = profile.emails[0].value;
+      }
+      var user = new User({
 				provider_id	: profile.id,
 				name				: profile.displayName,
-        email				: profile.emails[0].value,
+        email				: email,
 				photo				: profile.photos[0].value
 			});
 			user.save(function(err) {
